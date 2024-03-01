@@ -1,8 +1,13 @@
-use actix_web::{get, post, web, App, HttpResponse, HttpServer, Responder};
+use actix_web::{middleware::Logger, App, HttpServer};
 use dotenv::dotenv;
 use std::env;
 
+mod api;
 mod logger;
+mod routes;
+
+use routes::init_routes;
+
 use logger::logs;
 
 #[actix_web::main]
@@ -24,24 +29,11 @@ async fn main() -> std::io::Result<()> {
 
     HttpServer::new(|| {
         App::new()
-            .service(hello)
-            .service(echo)
-            .route("/hey", web::get().to(manual_hello))
+            .wrap(Logger::default())
+            .wrap(Logger::new("excample %a %{User-Agent}i"))
+            .configure(init_routes)
     })
     .bind((host, port))?
     .run()
     .await
-}
-#[get("/")]
-async fn hello() -> impl Responder {
-    HttpResponse::Ok().body("Hello World!")
-}
-
-#[post("/echo")]
-async fn echo(req_body: String) -> impl Responder {
-    HttpResponse::Ok().body(req_body)
-}
-
-async fn manual_hello() -> impl Responder {
-    HttpResponse::Ok().body("Hey there!")
 }
