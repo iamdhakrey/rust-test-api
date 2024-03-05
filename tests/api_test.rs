@@ -1,36 +1,11 @@
-use std::sync::Mutex;
+// use crate::src::{echo, hello};
 
-use actix_web::{get, post, web, HttpResponse, Responder};
-
-pub struct AppStateWithCounter {
-    pub counter: Mutex<i32>, // <- Mutex is necessary to mutate safely across threads
-}
-
-pub async fn index(data: web::Data<AppStateWithCounter>) -> String {
-    let mut counter = data.counter.lock().unwrap(); // <- access counter inside Mutex
-    *counter += 1; // <- increase counter
-    format!("Request number: {}", counter) // <- response with new counter value
-}
-
-#[get("/")]
-pub async fn hello() -> impl Responder {
-    HttpResponse::Ok().body("Hello World!")
-}
-
-#[post("/echo")]
-pub async fn echo(req_body: String) -> impl Responder {
-    HttpResponse::Ok().body(req_body)
-}
-
-pub async fn manual_hello() -> impl Responder {
-    HttpResponse::Ok().body("Hey there!")
-}
-
+// use test_api::{echo, hello};
 #[cfg(test)]
 mod tests {
+    // use super::*;
     use actix_web::{test, App};
-
-    use super::*;
+    use test_api::{echo, hello};
     #[actix_web::test]
     async fn test_hello() {
         let app = test::init_service(App::new().service(hello)).await;
