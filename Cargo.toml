@@ -3,13 +3,25 @@
 name = "test-api"
 version = "0.1.0"
 edition = "2021"
+description = 'A simple API to test actix-web'
+authors = ["Hrithik Dhakrey <dhakreyhrithik@gmail.com>"]
+license = "MIT"
+copyright = "2024, Hrithik Dhakrey"
+readme = "README.md"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 actix-web = "4.5.1"
+diesel = { version = "2.1.4", features = ["postgres"] }
 dotenv = "0.15.0"
 env_logger = "0.11.2"
-log = { version = "0.4.21", default-features = false, features = ["std", "serde"] }
+log = { version = "0.4.21", default-features = false, features = [
+    "std",
+    "serde",
+] }
 serde = { version = "1.0.197", features = ["derive"] }
 serde_json = "1.0.114"
+
+[package.metadata.arch]
+arch = ["x86_64"]
