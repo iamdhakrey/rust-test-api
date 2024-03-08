@@ -6,7 +6,6 @@ This is test project for learning rust apis with actix_web and diesel(postgres).
 
 ```bash
 
-
 # clone the code
 git clone https://github.com/iamdhakrey/rust-test-api
 
@@ -17,3 +16,5 @@ export PORT=5000
 # start server
 cargo run
 ```
+
+api server are now running on 127.0.0.1:5000
