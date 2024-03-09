@@ -5,6 +5,7 @@ This is test project for learning rust apis with actix_web and diesel(postgres).
 ### how to run
 
 ```bash
+sudo pacman -S rustup
 
 # clone the code
 git clone https://github.com/iamdhakrey/rust-test-api
