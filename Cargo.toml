@@ -9,7 +9,7 @@ license = "MIT"
 copyright = "2024, Hrithik Dhakrey"
 readme = "README.md"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html just add
 
 [dependencies]
 actix-web = "4.5.1"
