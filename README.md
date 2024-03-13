@@ -15,7 +15,7 @@ export HOST=127.0.0.1
 export PORT=5000
 
 # start server
-cargo run
+cargo run 
 ```
 
 api server are now running on 127.0.0.1:5000
