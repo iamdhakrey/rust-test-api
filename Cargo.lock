@@ -2,7 +2,7 @@
 # It is not intended for manual editing.
 version = 3
 
-[[package]]
+[[package]] 
 name = "actix-codec"
 version = "0.5.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
